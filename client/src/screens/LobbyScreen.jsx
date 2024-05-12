@@ -1,21 +1,38 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useEffect } from 'react';
+import { useSocket } from "../context/SocketProvider";
 import "./LobbyScreen.css";
+import { Socket } from 'socket.io-client';
 
 const LobbyScreen = () => {
 
   const [email, setEmail] = useState();
   const [room, setRoom] = useState();
 
+  const socket = useSocket();
+
+  console.log(socket);
 
   const handleSubmit = useCallback(
     (e) => {
-      e.preventDefault()
-      console.log({
-        email,
-        room
-      });
+      e.preventDefault();
+      socket.emit("room:join", { email, room });
+    }, [email, room]);
+
+
+  const handleJoinRoom = useCallback((data) => {
+    const { email, room } = data;
+    console.log(email, room);
+  }, []);
+
+
+  useEffect(() => {
+    socket.on("room:join", handleJoinRoom);
+
+    return () => {
+      socket.off("room:join", handleJoinRoom)
     }
-  );
+  }, [socket, handleJoinRoom]);
+
 
   return (
     <div className='lobby-div'>
