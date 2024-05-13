@@ -1,6 +1,8 @@
 import LobbyScreen from './screens/LobbyScreen';
 import './App.css';
 import {Route, Routes} from "react-router-dom";
+import RoomPage from './screens/RoomPage';
+
 
 
 function App() {
@@ -8,6 +10,7 @@ function App() {
     <div className="App">
     <Routes>
       <Route path='/' element={<LobbyScreen/>}/>
+      <Route path='/room/:roomId' element={<RoomPage/>}/>
     </Routes>
     </div>
   );

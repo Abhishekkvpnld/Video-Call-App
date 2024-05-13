@@ -1,7 +1,8 @@
 import React, { useCallback, useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 import { useSocket } from "../context/SocketProvider";
 import "./LobbyScreen.css";
-import { Socket } from 'socket.io-client';
+
 
 const LobbyScreen = () => {
 
@@ -9,28 +10,27 @@ const LobbyScreen = () => {
   const [room, setRoom] = useState();
 
   const socket = useSocket();
+  const navigate = useNavigate();
 
-  console.log(socket);
 
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
       socket.emit("room:join", { email, room });
-    }, [email, room]);
+    }, [email, room, socket]);
 
 
   const handleJoinRoom = useCallback((data) => {
     const { email, room } = data;
-    console.log(email, room);
-  }, []);
+    navigate(`/room/${room}`);
+  }, [navigate]);
 
 
   useEffect(() => {
     socket.on("room:join", handleJoinRoom);
-
     return () => {
       socket.off("room:join", handleJoinRoom)
-    }
+    } 
   }, [socket, handleJoinRoom]);
 
 
