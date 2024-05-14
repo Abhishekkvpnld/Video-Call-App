@@ -1,9 +1,9 @@
-.main-div {
+.room-div {
     display: flex;
-    height: 100%;
+    height: 100vh;
     flex-direction: column;
     align-items: center;
-    justify-content: baseline;
+    justify-content:center;
     background-color: rgb(211, 208, 205);
 }
 
@@ -13,4 +13,29 @@
     height: 50px;
     background-color: rgb(118, 213, 97);
     border-radius: 5px;
+}
+
+
+.send-stream{
+    margin: 1rem;
+    width: 150px;
+    height: 50px;
+    background-color: rgb(97, 196, 213);
+    border-radius: 5px;
+}
+
+
+.video-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+
+.video-content{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
 }

@@ -60,7 +60,7 @@ const RoomPage = () => {
   const handleNegoNeeded = useCallback(async () => {
     const offer = await peer.getOffer();
     socket.emit("peer:nego:needed", { offer, to: remoteSocketId });
-  }, [remoteSocketId,socket]);
+  }, [remoteSocketId, socket]);
 
 
   const handleNegoIncoming = useCallback(async ({ from, offer }) => {
@@ -83,7 +83,7 @@ const RoomPage = () => {
 
 
   useEffect(() => {
-    peer.peer.addEventListener("track", async(e) => {
+    peer.peer.addEventListener("track", async (e) => {
       const remoteStream = e.streams;
       console.log("GOT TRACK!!");
       setRemoteStream(remoteStream[0]);
@@ -111,23 +111,29 @@ const RoomPage = () => {
 
 
   return (
-    <div className='main-div'>
+    <div className='room-div'>
       <h1>RoomPage</h1>
       <h4>{remoteSocketId ? "connected" : "No one in this room"}</h4>
-      {myStream && <button onClick={sendStreams}>Send Stream</button>}
+      {myStream && <button className='send-stream' onClick={sendStreams}>Send Stream</button>}
       {remoteSocketId && <button className='call-btn' onClick={handleCallUser}>Call</button>}
-      {myStream && (
-        <>
-          <h1>My Stream</h1>
-          <ReactPlayer height={"200px"} width={"250px"} playing muted url={myStream} />
-        </>
-      )}
-      {remoteStream && (
-        <>
-          <h1>Remote Stream</h1>
-          <ReactPlayer height={"200px"} width={"250px"} playing muted url={remoteStream} />
-        </>
-      )}
+      <div className='video-box'>
+        <div className='video-content'>
+          {myStream && (
+            <>
+              <h1>My Stream</h1>
+              <ReactPlayer height={"400px"} width={"500px"} playing muted url={myStream} />
+            </>
+          )}
+        </div>
+        <div className='video-content'>
+          {remoteStream && (
+            <>
+              <h1>Remote Stream</h1>
+              <ReactPlayer height={"400px"} width={"500px"} playing muted url={remoteStream} />
+            </>
+          )}
+        </div>
+      </div>
     </div>
   )
 }
