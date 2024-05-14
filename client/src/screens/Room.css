@@ -1,0 +1,16 @@
+.main-div {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: baseline;
+    background-color: rgb(211, 208, 205);
+}
+
+
+.call-btn {
+    width: 150px;
+    height: 50px;
+    background-color: rgb(118, 213, 97);
+    border-radius: 5px;
+}
