@@ -35,21 +35,24 @@ const LobbyScreen = () => {
 
 
   return (
+    <div className='main-div'>
     <div className='lobby-div'>
       <form className='form' onSubmit={handleSubmit}>
 
         <h1>Form</h1>
-        <label htmlFor="email" className='label'>Email</label>
+        <label style={{fontSize:'20px'}} htmlFor="email" className='label'>Email</label>
+        <br />
         <input type="email" id='email' className='input' value={email} onChange={(e) => setEmail(e.target.value)} />
         <br />
-        <label htmlFor="room" className='label'>Room No</label>
+        <label style={{fontSize:'20px'}} htmlFor="room" className='label'>Room No</label>
+        <br />
         <input type="text" id='room' className='input' value={room} onChange={(e) => setRoom(e.target.value)} />
         <br />
-        <button style={{ margin: "1rem" }}>Join</button>
+        <button className='join-btn'>Join</button>
 
       </form>
     </div>
-
+    </div>
   )
 }
 

@@ -1,8 +1,22 @@
-.lobby-div{
-    height: 100%;
+
+.main-div{
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+   
+}
+
+.lobby-div{
+    height: 55%;
+    width: 50%;
+    border-radius: 10px;
+    background-color: rgb(166, 193, 170);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.75);
 }
 
 .label{
@@ -11,5 +25,25 @@
 
 
 .input{
-    margin-top: 1rem;
+    margin-top: 2px;
+}
+
+input{
+    border-radius: 5px;
+    width:350px;
+    height: 20px;
+}
+
+.join-btn{
+    margin:1rem;
+    width:100px;
+    height: 50px;
+    background-color: rgb(84, 164, 174);
+    color:"white";
+    border-radius:5px;
+}
+
+.join-btn:hover{
+    cursor: pointer;
+    background-color: aquamarine;
 }
