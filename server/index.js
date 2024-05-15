@@ -1,29 +1,29 @@
 import { Server } from "socket.io";
-// import {createServer} from "http";
-// import express from "express";
-// import cors from "cors";
+import {createServer} from "http";
+import express from "express";
+import cors from "cors";
 
 
 
-// const corsOptions = {
-//   origin: [
-//     "http://localhost:3000"
-//   ],
-//   methods: ["GET", "POST", "PUT", "DELETE"],
-//   credentials: true
-// };
+const corsOptions = {
+  origin: [
+    "http://localhost:3000"
+  ],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+};
 
-// const app = express();
-// const httpServer = createServer(app);
-const io = new Server(5000, { cors: true });
+const app = express();
+const httpServer = createServer(app);
+const io = new Server(httpServer, { cors: true });
 
-// app.use(express.json());
-// app.use(cors(corsOptions));
+app.use(express.json());
+app.use(cors(corsOptions));
 
 
-// app.get("/",(req,res)=>{
-// res.send("Server running")
-// });
+app.get("/",(req,res)=>{
+res.send("Server running")
+});
 
 
 const emailToSocketIdMap = new Map();
@@ -62,6 +62,6 @@ io.on("connection", (socket) => {
 
 });
 
-// httpServer.listen(5000,()=>{
-// console.log("Server connected");
-// });
+httpServer.listen(5000,()=>{
+console.log("Server connected");
+});
