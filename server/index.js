@@ -7,7 +7,8 @@ import cors from "cors";
 
 const corsOptions = {
   origin: [
-    "http://localhost:3000"
+    "http://localhost:3000",
+    "https://video-call-app-chi.vercel.app"
   ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
